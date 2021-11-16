@@ -2,13 +2,15 @@ package com.farshadhp.myappvp2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.databinding.DataBindingUtil
+import com.farshadhp.myappvp2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         val images = listOf(
             R.drawable.rrcullinan,R.drawable.rrphantom,R.drawable.rrghost
         )
@@ -17,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         val adapter = ViewPagerAdaptor(images,imageTexts)
-        vp.adapter = adapter
+        binding.vp.adapter = adapter
 
     }
 }
