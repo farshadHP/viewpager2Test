@@ -2,7 +2,6 @@ package com.farshadhp.myappvp2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
 import com.farshadhp.myappvp2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +17,7 @@ class MainActivity : AppCompatActivity() {
             "RollsRoyce Cullinan","RollsRoyce Phantom","RollsRoyce Ghost"
         )
 
-        val adapter = ViewPagerAdaptor(images,imageTexts)
+        val adapter = RecyclerViewAdaptor(images,imageTexts)
         binding.vp.adapter = adapter
 
     }
