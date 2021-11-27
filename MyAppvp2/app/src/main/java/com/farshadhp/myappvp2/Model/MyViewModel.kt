@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.farshadhp.myappvp2.Repository.Repository
 import kotlinx.coroutines.launch
 
-class ViewModel(private  val repository: Repository): ViewModel() {
+class MyViewModel(private  val repository: Repository): ViewModel() {
     var myResponse: MutableLiveData<Model> = MutableLiveData()
 
     fun getModel(){
