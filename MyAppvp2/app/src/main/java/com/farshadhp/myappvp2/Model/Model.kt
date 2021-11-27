@@ -1,9 +1,8 @@
 package com.farshadhp.myappvp2.Model
 
 data class Model (
-        var imageTxt: String,
-        var imageSrc: String
-        ){
-
-
-}
+        var userId: Int,
+        var id: Int,
+        var title: String,
+        var body: String
+)
