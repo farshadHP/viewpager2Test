@@ -1,4 +1,4 @@
-package com.farshadhp.myappvp2
+package com.farshadhp.myappvp2.Retrofit
 
 class Constants {
     companion object{

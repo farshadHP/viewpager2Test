@@ -1,4 +1,4 @@
-package com.farshadhp.myappvp2
+package com.farshadhp.myappvp2.Retrofit
 
 import com.farshadhp.myappvp2.Model.Model
 import retrofit2.http.GET
