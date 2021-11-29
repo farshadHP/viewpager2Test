@@ -1,6 +1,7 @@
 package com.farshadhp.myappvp2
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.farshadhp.myappvp2.Model.Model
@@ -9,6 +10,7 @@ import com.farshadhp.myappvp2.databinding.ItemVp2Binding
 
 class RecyclerViewAdaptor() : RecyclerView.Adapter<RecyclerViewAdaptor.RVHolder>(){
     private var myList = emptyList<Model>()
+    private lateinit var v : View
 
     inner class RVHolder(val viewDataBinding: ItemVp2Binding) : RecyclerView.ViewHolder(viewDataBinding.root)
 
@@ -24,7 +26,7 @@ class RecyclerViewAdaptor() : RecyclerView.Adapter<RecyclerViewAdaptor.RVHolder>
 
         val adapter = ViewPager2Adaptor()
         holder.viewDataBinding.vp.adapter = adapter
-        adapter.setData(myList)
+        adapter.setData(myList,v)
 
     }
 
@@ -32,8 +34,9 @@ class RecyclerViewAdaptor() : RecyclerView.Adapter<RecyclerViewAdaptor.RVHolder>
         return  1
     }
 
-    fun setData(newList: List<Model>){
+    fun setData(newList: List<Model>, v : View){
         myList = newList
+        this.v= v
         notifyDataSetChanged()
     }
 
