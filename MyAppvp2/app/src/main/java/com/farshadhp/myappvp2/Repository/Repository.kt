@@ -9,7 +9,7 @@ class Repository {
         return RetrofitInstance.api.getModel()
     }
 
-    suspend fun getCustomModel(userId: Int,userId2: Int): Response<List<Model>> {
-        return RetrofitInstance.api.getCustomModel(userId,userId2)
+    suspend fun getCustomModel(userId: Int): Response<List<Model>> {
+        return RetrofitInstance.api.getCustomModel(userId)
     }
 }

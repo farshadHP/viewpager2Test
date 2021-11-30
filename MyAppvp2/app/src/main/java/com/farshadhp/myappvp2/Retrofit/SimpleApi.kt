@@ -11,8 +11,7 @@ interface SimpleApi {
 
     @GET("posts")
     suspend fun getCustomModel(
-        @Query("userId") userId: Int,
-        @Query("userId") userId2: Int
+        @Query("userId") userId: Int
     ): Response<List<Model>>
 
 }

@@ -16,9 +16,9 @@ class MyViewModel(private  val repository: Repository): ViewModel() {
             myResponse.value= response
         }
     }
-    fun getCustomModel(userId: Int,userId2: Int) {
+    fun getCustomModel(userId: Int) {
         viewModelScope.launch {
-            val response = repository.getCustomModel(userId,userId2)
+            val response = repository.getCustomModel(userId)
             myCustomModel.value = response
         }
     }

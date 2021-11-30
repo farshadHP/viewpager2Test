@@ -20,9 +20,8 @@ package="com.farshadhp.myappvp2">
     </activity>
 
     <activity
-        android:name="com.farshadhp.myappvp2.ItemDetailActivity"
+        android:name=".ItemDetailActivity"
         android:exported="true"
-
         />
 
 

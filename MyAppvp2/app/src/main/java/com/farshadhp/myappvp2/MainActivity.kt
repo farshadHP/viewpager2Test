@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val adapter = RecyclerViewAdaptor()
+        val adapter = RecyclerViewAdaptor(this)
         //binding.vp.layoutManager()
         binding.rv.layoutManager = LinearLayoutManager(this)
         //GridLayoutManager(this, 2)
@@ -30,9 +30,10 @@ class MainActivity : AppCompatActivity() {
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MyViewModel::class.java)
         viewModel.getModel()
-        viewModel.getCustomModel(1,2)
+        viewModel.getCustomModel(1)
         viewModel.myCustomModel.observe(this, Observer { response ->
             if(response.isSuccessful){
+                Log.e("hellllllllllllllllo","\n\n\n\n\n\n\n\n hello \n\n\n")
                 response.body()?.let { adapter.setData(response.body()!!) }
             }else {
                 Toast.makeText(this, response.code(), Toast.LENGTH_SHORT).show()
