@@ -11,7 +11,6 @@ import com.farshadhp.myappvp2.databinding.ItemVp2Binding
 
 class RecyclerViewAdaptor(private var v: Activity) : RecyclerView.Adapter<RecyclerViewAdaptor.RVHolder>(){
     private var myList = emptyList<Model>()
-    //private var v : Activity
 
     inner class RVHolder(val viewDataBinding: ItemVp2Binding) : RecyclerView.ViewHolder(viewDataBinding.root)
 
@@ -21,14 +20,9 @@ class RecyclerViewAdaptor(private var v: Activity) : RecyclerView.Adapter<Recycl
     }
 
     override fun onBindViewHolder(holder: RVHolder, position: Int) {
-        //holder.viewDataBinding.ivImage.setImageResource(images[position])
-        //Log.e("test","amad inja")
-        //holder.viewDataBinding.tvText.text = imageTexts[position]
-
         val adapter = ViewPager2Adaptor(v)
         holder.viewDataBinding.vp.adapter = adapter
         adapter.setData(myList)
-
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +31,6 @@ class RecyclerViewAdaptor(private var v: Activity) : RecyclerView.Adapter<Recycl
 
     fun setData(newList: List<Model>){
         myList = newList
-
         notifyDataSetChanged()
     }
 

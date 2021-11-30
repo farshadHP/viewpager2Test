@@ -10,9 +10,9 @@ import retrofit2.Response
 class MyViewModel(private  val repository: Repository): ViewModel() {
     var myResponse: MutableLiveData<Response<Model>> = MutableLiveData()
     var myCustomModel: MutableLiveData<Response<List<Model>>> = MutableLiveData()
-    fun getModel(){
+    fun getModel(userId: Int,id :Int){
         viewModelScope.launch {
-            val response = repository.getModel()
+            val response = repository.getModel(userId,id)
             myResponse.value= response
         }
     }

@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val repository = Repository()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MyViewModel::class.java)
-        viewModel.getModel()
+        //viewModel.getModel()
         viewModel.getCustomModel(1)
         viewModel.myCustomModel.observe(this, Observer { response ->
             if(response.isSuccessful){
