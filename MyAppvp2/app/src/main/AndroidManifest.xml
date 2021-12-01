@@ -22,6 +22,8 @@ package="com.farshadhp.myappvp2">
     <activity
         android:name=".ItemDetailActivity"
         android:exported="true"
+        android:label="Product1"
+        android:parentActivityName=".MainActivity"
         />
 
 

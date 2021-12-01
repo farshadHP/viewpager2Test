@@ -13,6 +13,7 @@ import com.farshadhp.myappvp2.Model.ViewModelFactory
 import com.farshadhp.myappvp2.Repository.Repository
 import com.farshadhp.myappvp2.databinding.ActivityItemDetailBinding
 import com.farshadhp.myappvp2.databinding.LoadingDialogBinding
+import retrofit2.Response
 
 class ItemDetailActivity : AppCompatActivity() {
     private  lateinit var viewModel : MyViewModel
@@ -25,7 +26,7 @@ class ItemDetailActivity : AppCompatActivity() {
         val repository = Repository()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MyViewModel::class.java)
-        viewModel.getModel(1, intent.extras?.getInt("id")!!)
+        //viewModel.getModel(1, intent.extras?.getInt("id")!!)
         loadingDialog = Dialog(this)
         val dialogBinding : LoadingDialogBinding = LoadingDialogBinding.inflate(layoutInflater)
         loadingDialog.setContentView(dialogBinding.root)
@@ -34,16 +35,19 @@ class ItemDetailActivity : AppCompatActivity() {
         Handler().postDelayed({
             loadingDialog.dismiss()
         },1000)
-        viewModel.myResponse.observe(this, Observer { response ->
+        viewModel.myCustomModel.observe(this, Observer { response ->
             if(response.isSuccessful){
-                binding.tvDetailId.setText(response.body()?.id.toString())
-                binding.tvDetailText.setText(response.body()?.body.toString())
-                binding.tvDetailTitle.setText(response.body()?.title.toString())
+                for(model in response.body()!!){
+                    if(model.id == intent.extras?.getInt("id")!!) {
+                        binding.tvDetailId.setText(model.id.toString())
+                        binding.tvDetailText.setText(model.body.toString())
+                        binding.tvDetailTitle.setText(model.title.toString())
+                    }
+                }
 
             }else {
                 Toast.makeText(this, response.code(), Toast.LENGTH_SHORT).show()
             }
         })
-
     }
 }

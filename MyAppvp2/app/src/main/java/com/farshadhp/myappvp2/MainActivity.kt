@@ -27,11 +27,10 @@ class MainActivity : AppCompatActivity() {
         val repository = Repository()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MyViewModel::class.java)
-        viewModel.getCustomModel(1)
+        //viewModel.getCustomModel(1)
         viewModel.myCustomModel.observe(this, Observer { response ->
             if(response.isSuccessful){
-                Log.e("hellllllllllllllllo","\n\n\n\n\n\n\n\n hello \n\n\n")
-                response.body()?.let { adapter.setData(response.body()!!) }
+                response.body()?.let { adapter.setData(response.body()!!)}
             }else {
                 Toast.makeText(this, response.code(), Toast.LENGTH_SHORT).show()
             }

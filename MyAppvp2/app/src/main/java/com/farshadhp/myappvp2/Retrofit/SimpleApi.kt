@@ -1,6 +1,8 @@
 package com.farshadhp.myappvp2.Retrofit
 
 import com.farshadhp.myappvp2.Model.Model
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,7 +17,7 @@ interface SimpleApi {
     ): Response<Model>
 
     @GET("posts")
-    suspend fun getCustomModel(
+    suspend fun getCustomModel (
         @Query("userId") userId: Int
     ): Response<List<Model>>
 
