@@ -26,21 +26,16 @@ class ItemDetailActivity : AppCompatActivity() {
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MyViewModel::class.java)
         viewModel.getModel(1, intent.extras?.getInt("id")!!)
-        //viewModel.getCustomModel(1)
-        //Toast.makeText(this,viewModel.myResponse.toString(),Toast.LENGTH_LONG).show()
         loadingDialog = Dialog(this)
         val dialogBinding : LoadingDialogBinding = LoadingDialogBinding.inflate(layoutInflater)
         loadingDialog.setContentView(dialogBinding.root)
         loadingDialog.show()
         loadingDialog.setCancelable(false)
-        //val handler : Handler
         Handler().postDelayed({
             loadingDialog.dismiss()
         },1000)
         viewModel.myResponse.observe(this, Observer { response ->
             if(response.isSuccessful){
-                //Log.e("hellllllllllllllllo","\n\n\n\n\n\n\n\n hello \n\n\n")
-                //response.body()?.let { adapter.setData(response.body()!!) }
                 binding.tvDetailId.setText(response.body()?.id.toString())
                 binding.tvDetailText.setText(response.body()?.body.toString())
                 binding.tvDetailTitle.setText(response.body()?.title.toString())
@@ -49,8 +44,6 @@ class ItemDetailActivity : AppCompatActivity() {
                 Toast.makeText(this, response.code(), Toast.LENGTH_SHORT).show()
             }
         })
-
-        //Toast.makeText(this,intent.extras?.getInt("id").toString(),Toast.LENGTH_LONG).show()
 
     }
 }

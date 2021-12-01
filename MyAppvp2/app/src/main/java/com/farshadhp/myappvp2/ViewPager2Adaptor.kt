@@ -23,7 +23,6 @@ class ViewPager2Adaptor(private var v : Activity) : RecyclerView.Adapter<ViewPag
 
     override fun onBindViewHolder(holder: RVHolder, position: Int) {
         holder.viewDataBinding.tvId.text = myList[position].id.toString()
-        Log.e("test","amad inja")
         holder.viewDataBinding.tvTitle.text = myList[position].title
         holder.viewDataBinding.vpItem.setOnClickListener {
             val intent = Intent(v, ItemDetailActivity::class.java)

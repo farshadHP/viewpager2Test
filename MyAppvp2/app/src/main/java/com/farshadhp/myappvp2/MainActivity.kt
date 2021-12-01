@@ -22,14 +22,11 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val adapter = RecyclerViewAdaptor(this)
-        //binding.vp.layoutManager()
         binding.rv.layoutManager = LinearLayoutManager(this)
-        //GridLayoutManager(this, 2)
         binding.rv.adapter = adapter
         val repository = Repository()
         val viewModelFactory = ViewModelFactory(repository)
         viewModel = ViewModelProvider(this,viewModelFactory).get(MyViewModel::class.java)
-        //viewModel.getModel()
         viewModel.getCustomModel(1)
         viewModel.myCustomModel.observe(this, Observer { response ->
             if(response.isSuccessful){
